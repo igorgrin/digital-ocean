@@ -6,6 +6,11 @@ resource "digitalocean_droplet" "example" {
   ssh_keys = [
     "YOUR_SSH_KEY_FINGERPRINT",
   ]
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Hello from user data script!" > /root/user_data_output.txt
+              # Add more custom configuration here
+              EOF
 }
 
 resource "cloudflare_record" "example_dns" {
